@@ -196,8 +196,8 @@ async function fetchData(){
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        //const response = await fetchData();
-        data=mockData; //response;
+        const response = await fetchData();
+        data=response;
         setOptions(data);
         clearSearch();
         updateTable(data);
