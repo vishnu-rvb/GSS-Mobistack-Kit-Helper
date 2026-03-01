@@ -4,48 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GSS Mobistack Kit Helper</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="scripts.js" defer></script>
-    <link href="styles.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">-->
 
+    <script src="static/jQuery.js" defer></script>
+    <link href="static/select2.css" rel="stylesheet">
+    <script src="static/select2.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="static/styles.css" rel="stylesheet">
+    <script src="static/scripts.js" defer></script>
 </head>
 <body>
     <div class="heading">
-    <img src="assets/Logo.png" alt="Logo" style="height: 50px;">
+    <img src="static/Logo.png" alt="Logo" style="height: 50px;">
     <h1>GSS Mobistack Kit Helper</h1>
     </div>
     <div id="reader" width="600px"></div>
 
     <!-- loading screen -->
     <div id="loading-overlay">
-        <div class="loading-box">Loading...</div>
+        <div>
+            <img src="static/Loading.gif">
+            Loading...
+        </div>
     </div>
 
     <!-- Search Section -->
     <div class="search-container">
-        <div style="display: flex; gap: 10px; justify-content: center;">
+        <div class="search-wrapper">
             <select id="searchInput"><!--options--></select>
-            <button onclick="search()" class="btn-search">Search</button>
-            <button onclick="clearSearch()" class="btn-clear">Clear</button>
+            <div class="btn-group">
+                <button class="btn-search" onclick="search()">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Search
+                </button>
+                <button class="btn-clear" onclick="clearSearch()">
+                    <i class="fa-solid fa-eraser"></i>
+                    Clear
+                </button>
+                <button class="btn-refresh" onclick="location.reload()">
+                    <i class="fa-solid fa-rotate"></i>
+                    Refresh
+                </button>
+            </div>
         </div>
     </div>
 
     <!-- Dynamic Table -->
     <div class="table-cnt">
         <label id="kitName">Kit Items</label>
-        <table id="kitTable">
-            <thead>
-                <tr>
-                    <th>Sno</th>
-                    <th>Kit Content</th>
-                    <th>Child Dwg No</th>
-                    <th>Qty/pack</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody"><!--data--></tbody>
-        </table>
+        <div class="table-responsive">
+            <table id="kitTable">
+                <thead>
+                    <tr>
+                        <th>Sno</th>
+                        <th>Kit Content</th>
+                        <th>Child Dwg No</th>
+                        <th>Qty/pack</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"><!--data--></tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>

@@ -1,5 +1,9 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Cleaner font */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 20px;
     background-color: #ffffff;
@@ -25,6 +29,7 @@ h1 {
 }
 
 #loading-overlay {
+    flex-direction: column;
     position: fixed;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
@@ -35,30 +40,40 @@ h1 {
     z-index: 9999;
 }
 
-.loading-box {
-    padding: 20px 40px;
+#loading-overlay div {
+    width: 150px;
+    height: auto;
+    padding: 10px 25px 10px 25px;
     background: white;
     border-radius: 10px;
     font-size: 1.2rem;
     font-weight: bold;
+    text-align: center;
+}
+
+#loading-overlay div img{
+    width: 100px;
+    height: 100px;
 }
 
 .search-container {
     margin: 20px auto;
-    width: 80%;
+    width: 90%;
     max-width: 600px;
 }
 
-.search-container > div {
+.search-wrapper {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
-    justify-content: center;
     align-items: center;
 }
 
 #searchInput {
     flex: 1;
+    min-width: 250px;
     padding: 12px 15px;
+    margin: 0;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -81,32 +96,45 @@ h1 {
     border-radius: 5px
 }
 
-.btn-search, .btn-clear {
+.btn-group {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    margin: 0;
+}
+
+.btn-group button {
     padding: 12px 20px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s;
-    margin-left: 5px;
+    margin: 0;
+    white-space: nowrap;
+    color: white;
 }
 
-.btn-search { background-color: #005fcc; color: white; }
-.btn-clear { background-color: #dc3545; color: white; }
+.btn-search { background-color: #005fcc; }
+.btn-clear { background-color: #dc3545; }
+.btn-refresh { background-color: #17a2b8; }
 
 .btn-search:hover { background-color: #004da7; }
 .btn-clear:hover { background-color: #a71d2a; }
+.btn-refresh:hover { background-color: #117a8b; }
 
 .table-cnt {
-    margin: 20px auto;
-    width: 90%;
+    margin: auto;
+    min-width: 100px;
     max-width: 800px;
 }
 
 #kitName {
     display: block;
-    margin-bottom: 0px;
-    padding: 10px 15px;
+    width: 100%;
+    min-width: 200px;
+    padding: 10px;
     font-size: 1.1rem;
     font-weight: bold;
     color: #ffffff;
@@ -115,14 +143,19 @@ h1 {
     border-radius: 10px;
 }
 
+.table-responsive {
+    overflow-x: auto; /*horizontal scrollbar*/
+    -webkit-overflow-scrolling: touch; /*iOS scrollbar*/
+    border-radius: 10px 10px 0 0;
+    margin-top: 5px;
+}
+
 #kitTable {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 5px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    border-radius: 10px;
-    overflow: hidden;
-    /*border: 1px solid #0056b3;*/
+    border-collapse: collapse;
+    /*overflow: hidden;
+    border: 1px solid #0056b3;*/
 }
 
 #kitTable th, #kitTable td {
@@ -150,4 +183,25 @@ h1 {
 
 #kitTable tbody tr:hover {
     background-color: #EBF5FF;
+}
+
+@media screen and (max-width: 600px) {
+    h1 { font-size: 1.2rem;}
+    body { padding: 5px; }
+    #searchInput { flex: none; }
+    
+    .table-cnt { 
+        padding: 0;
+        max-width: 600px;
+    }
+
+    .search-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-group button {
+        flex: 1;
+        padding: 12px 5px;
+    }
 }

@@ -34,6 +34,7 @@ const mockData = [
 let data = [];
 const searchInp = $('#searchInput');
 const arrow=$('.select2-container--default .select2-selection--single .select2-selection__arrow b');
+
 function showLoading(value) {
     const loadingOverlay = document.querySelector('#loading-overlay');
     loadingOverlay.style.display = (value ? 'flex' : 'none');
